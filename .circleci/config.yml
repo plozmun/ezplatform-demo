@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.1.8-browsers
+      # - image: circleci/php:7.1.8-browsers
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -20,7 +20,10 @@ jobs:
       - checkout
       - run:
           name: Install PHP71
-          command: sudo apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
+          command: |
+              sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+              sudo apt-get update          
+              sudo apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
       - run: composer self-update
       # Download and cache dependencies
       - restore_cache:
