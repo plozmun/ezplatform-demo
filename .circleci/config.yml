@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: Install Intl
-          command: sudo apt-get install php71-intl
+          command: sudo apt-get install php7-intl
       - run: composer self-update
       # Download and cache dependencies
       - restore_cache:
